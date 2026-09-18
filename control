@@ -1,0 +1,10 @@
+Package: com.hunterstarets.bluebubbles-ios
+Name: BlueBubbles iOS
+Version: 0.0.1
+Architecture: iphoneos-arm
+Depends: mobilesubstrate, com.rpetrich.rocketbootstrap, preferenceloader
+Author: Hunter Starets
+Maintainer: Hunter Starets
+Section: Tweaks
+Homepage: https://github.com/HunterStarets/bluebubbles-ios
+Description: Unofficial BlueBubbles server for jailbroken iOS 9. Lets the stock BlueBubbles clients read and send this device's iMessage and SMS.

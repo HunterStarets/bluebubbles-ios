@@ -1,0 +1,18 @@
+name: host tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  host:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: C suites and Node contract tests
+        run: cd tests && make clean && make check
+      - name: Sanitizer pass
+        run: cd tests && make sanitize

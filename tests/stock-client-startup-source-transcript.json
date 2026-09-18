@@ -1,0 +1,81 @@
+{
+  "kind": "source-derived",
+  "clientRevision": "e2eaced6e61eee746757a070475197bf23b671ad",
+  "runtimeCapturePending": true,
+  "reason": "The workspace does not currently provide flutter or dart executables.",
+  "sequence": [
+    {
+      "phase": "credential-connect",
+      "method": "GET",
+      "path": "/api/v1/server/info",
+      "requiredForConversationList": true
+    },
+    {
+      "phase": "credential-connect",
+      "method": "GET",
+      "path": "/api/v1/fcm/client",
+      "requiredForConversationList": false,
+      "note": "Attempted by setup; failure is non-gating for a direct or LAN origin."
+    },
+    {
+      "phase": "credential-connect",
+      "method": "GET",
+      "path": "/socket.io/",
+      "queryKeys": ["EIO", "transport"],
+      "requiredForConversationList": false,
+      "note": "Socket.IO starts after the credential requests and is required for live operation."
+    },
+    {
+      "phase": "full-sync",
+      "method": "GET",
+      "path": "/api/v1/server/info",
+      "requiredForConversationList": true,
+      "note": "Usually served from the client HTTP service's one-minute cache."
+    },
+    {
+      "phase": "full-sync",
+      "method": "GET",
+      "path": "/api/v1/chat/count",
+      "requiredForConversationList": true
+    },
+    {
+      "phase": "full-sync",
+      "method": "POST",
+      "path": "/api/v1/chat/query",
+      "bodyKeys": ["limit", "offset", "sort", "with"],
+      "requiredForConversationList": true
+    },
+    {
+      "phase": "full-sync",
+      "method": "GET",
+      "path": "/api/v1/chat/:guid/message",
+      "queryKeys": ["after", "before", "limit", "offset", "sort", "with"],
+      "repeat": "once per returned chat",
+      "requiredForConversationList": true
+    },
+    {
+      "phase": "post-setup-incremental-sync",
+      "method": "GET",
+      "path": "/api/v1/message/count",
+      "queryKeys": ["after"],
+      "requiredForConversationList": false
+    },
+    {
+      "phase": "post-setup-incremental-sync",
+      "method": "POST",
+      "path": "/api/v1/message/query",
+      "bodyKeys": [
+        "after",
+        "before",
+        "chatGuid",
+        "convertAttachments",
+        "limit",
+        "offset",
+        "sort",
+        "where",
+        "with"
+      ],
+      "requiredForConversationList": false
+    }
+  ]
+}

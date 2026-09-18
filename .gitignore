@@ -1,0 +1,20 @@
+# Build output
+.theos/
+build/
+packages/
+*.deb
+
+# Host test binaries
+tests/websocket_test
+tests/http_test
+tests/socketio_test
+tests/json_test
+tests/serialize_test
+tests/multipart_test
+tests/connection_test
+tests/engineio_test
+tests/bridge_test
+
+# Local, never committed
+AGENTS.local.md
+notes/
